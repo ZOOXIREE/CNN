@@ -9,14 +9,17 @@
             text-align: center;
             margin-top: 50px;
         }
-        input[type="submit"] {
+        input[type="submit"], a.download-btn {
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
         }
-        input[type="submit"]:hover {
+        input[type="submit"]:hover, a.download-btn:hover {
             background-color: #45a049;
         }
         select {
@@ -43,6 +46,9 @@
     {% if result %}
         <h2>Результат: {{ result }}</h2>
         <p>Вероятность: {{ probability }}%</p>
+        {% if download_file %}
+            <a href="{{ url_for('download_result', filename=download_file) }}" class="download-btn">Скачать результат</a>
+        {% endif %}
     {% endif %}
 
     {% if error %}
