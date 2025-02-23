@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Распознавание объектов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Загрузите изображение для распознавания</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".png,.jpg,.jpeg,.bmp">
+        <input type="submit" value="Распознать">
+    </form>
+
+    {% if result %}
+        <h2>Результат: {{ result }}</h2>
+        <p>Вероятность: {{ probability }}%</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">Ошибка: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
