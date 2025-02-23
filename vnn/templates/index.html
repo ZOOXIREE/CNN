@@ -19,12 +19,24 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        select {
+            padding: 10px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Загрузите изображение для распознавания</h1>
     <form method="POST" enctype="multipart/form-data">
         <input type="file" name="file" accept=".png,.jpg,.jpeg,.bmp">
+        <br>
+        <label for="model">Выберите модель:</label>
+        <select name="model" id="model">
+            <option value="resnet50" {% if selected_model == "resnet50" %}selected{% endif %}>ResNet50</option>
+            <option value="vgg16" {% if selected_model == "vgg16" %}selected{% endif %}>VGG16</option>
+            <option value="efficientnet_b0" {% if selected_model == "efficientnet_b0" %}selected{% endif %}>EfficientNet-B0</option>
+        </select>
+        <br>
         <input type="submit" value="Распознать">
     </form>
 
